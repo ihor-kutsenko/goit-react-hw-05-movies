@@ -24,7 +24,7 @@ export const Header = styled.header`
 export const Logo = styled.p`
   font-weight: 700;
   display: flex;
-  color: ${props => props.theme.colors.black};
+  color: ${props => props.theme.colors.accent};
   align-items: center;
   flex-direction: row-reverse;
   padding-right: 10px;
@@ -36,7 +36,7 @@ export const Link = styled(NavLink)`
   padding: 8px 16px;
   border-radius: 25px;
   text-decoration: none;
-  color: black;
+  color: ${props => props.theme.colors.accent};
   opacity: 2;
   font-weight: 500;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
