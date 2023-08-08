@@ -1,8 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+
+import SharedLayout from './SharedLayout/SharedLayout';
 import Movies from 'pages/Movies';
 import Home from 'pages/Home';
-import { ToastContainer } from 'react-toastify';
-import SharedLayout from './SharedLayout/SharedLayout';
 
 export const App = () => {
   return (
