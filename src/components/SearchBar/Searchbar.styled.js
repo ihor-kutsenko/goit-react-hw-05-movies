@@ -1,26 +1,16 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  top: 0;
-  left: 0;
-  position: sticky;
-  z-index: 1100;
-  border-radius: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 48px;
-  padding: 12px, 24px, 12px, 24px;
-`;
-
 export const Form = styled.form`
-  margin-top: 30px;
   display: flex;
   align-items: center;
-  width: 500px;
-  background-color: ${props => props.theme.colors.white};
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
   border-radius: 25px;
   overflow: hidden;
+  background-color: ${props => props.theme.colors.white};
   color: ${props => props.theme.colors.white};
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);

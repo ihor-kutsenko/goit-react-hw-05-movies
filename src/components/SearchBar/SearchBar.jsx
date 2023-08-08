@@ -5,7 +5,7 @@ import { FcSearch } from 'react-icons/fc';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import notifyOptions from 'components/NotifyOptions/NotifyOptions';
-import { Container, Form, Button, Input } from './Searchbar.styled';
+import { Form, Button, Input } from './Searchbar.styled';
 
 const SearchBar = ({ onSubmit }) => {
   const [searchParams] = useSearchParams();
@@ -26,7 +26,7 @@ const SearchBar = ({ onSubmit }) => {
   };
 
   return (
-    <Container>
+    <>
       <Form onSubmit={onFormSubmit}>
         <Input
           name="query"
@@ -42,7 +42,7 @@ const SearchBar = ({ onSubmit }) => {
           </span>
         </Button>
       </Form>
-    </Container>
+    </>
   );
 };
 
