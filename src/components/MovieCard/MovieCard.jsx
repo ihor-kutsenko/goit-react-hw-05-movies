@@ -8,6 +8,9 @@ import {
   TextContainer,
   TextWrapper,
   ReleaseYear,
+  InfoItem,
+  InfoText,
+  InfoList,
 } from './MovieCard.styled';
 
 const MovieCard = ({
@@ -23,32 +26,45 @@ const MovieCard = ({
   const review = overview ? overview : 'Not overview';
 
   return (
-    <ContainerCard>
-      <Image src={posterUrl} alt={title} width="200"></Image>
-      <TextContainer>
-        <MovieTitle>
-          {title}
-          <ReleaseYear>({releaseYear})</ReleaseYear>
-        </MovieTitle>
-        <TextTitle>User score: {rating}</TextTitle>
-        <TextOverview>
-          <TextTitle>Overview</TextTitle>
-          {review}
-        </TextOverview>
-        <TextWrapper>
-          <TextTitle>Release date: </TextTitle>
-          <TextTitleInfo>{releaseYear}</TextTitleInfo>
-        </TextWrapper>
-        {genres && genres.length > 0 && (
+    <>
+      <ContainerCard>
+        <Image src={posterUrl} alt={title} width="200"></Image>
+
+        <TextContainer>
+          <MovieTitle>
+            {title}
+            <ReleaseYear>({releaseYear})</ReleaseYear>
+          </MovieTitle>
+          <TextTitle>User score: {rating}</TextTitle>
+          <TextOverview>
+            <TextTitle>Overview</TextTitle>
+            {review}
+          </TextOverview>
           <TextWrapper>
-            <TextTitle>Genres: </TextTitle>
-            <TextTitleInfo>
-              {genres.map(genre => genre.name).join(', ')}
-            </TextTitleInfo>
+            <TextTitle>Release date: </TextTitle>
+            <TextTitleInfo>{releaseYear}</TextTitleInfo>
           </TextWrapper>
-        )}
-      </TextContainer>
-    </ContainerCard>
+          {genres && genres.length > 0 && (
+            <TextWrapper>
+              <TextTitle>Genres: </TextTitle>
+              <TextTitleInfo>
+                {genres.map(genre => genre.name).join(', ')}
+              </TextTitleInfo>
+            </TextWrapper>
+          )}
+          <div></div>
+          <InfoText>Additional information</InfoText>
+          <InfoList>
+            <li>
+              <InfoItem to="cast">Cast</InfoItem>
+            </li>
+            <li>
+              <InfoItem to="reviews">Reviews</InfoItem>
+            </li>
+          </InfoList>
+        </TextContainer>
+      </ContainerCard>
+    </>
   );
 };
 

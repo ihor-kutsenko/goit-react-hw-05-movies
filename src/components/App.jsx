@@ -5,6 +5,8 @@ import SharedLayout from './SharedLayout/SharedLayout';
 import Movies from 'pages/Movies';
 import Home from 'pages/Home';
 import MoviesDetails from 'pages/MoviesDetails';
+import Cast from './Cast/Cast';
+import Review from './Reviews/Reviews';
 
 export const App = () => {
   return (
@@ -13,7 +15,10 @@ export const App = () => {
         <Route path="/" element={<SharedLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="movies" element={<Movies />} />
-          <Route path="movies/:movieId" element={<MoviesDetails />} />
+          <Route path="movies/:movieId" element={<MoviesDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Review />} />
+          </Route>
         </Route>
       </Routes>
       <ToastContainer />

@@ -1,7 +1,9 @@
 import styled from 'styled-components';
-// import { BackBtn } from 'pages/MoviesDetails.styled';
+import { Link } from 'react-router-dom';
 
 export const ContainerCard = styled.div`
+  padding: 15px;
+
   background-color: ${props => props.theme.colors.grey};
   color: ${props => props.theme.colors.text};
   height: auto;
@@ -56,8 +58,9 @@ export const TextTitleInfo = styled.span`
 
 export const InfoText = styled.h3`
   text-align: center;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-top: 120px;
+  margin-bottom: 20px;
+  color: ${props => props.theme.colors.white};
 `;
 export const InfoList = styled.ul`
   display: flex;
@@ -65,6 +68,29 @@ export const InfoList = styled.ul`
   gap: 30px;
 `;
 
-// export const InfoItem = styled(BackBtn)`
-//   margin-left: 0;
-// `;
+export const InfoItem = styled(Link)`
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 25px;
+  text-decoration: none;
+  text-align: center;
+  width: 80px;
+  color: ${props => props.theme.colors.black};
+  background-color: ${props => props.theme.colors.accent};
+  opacity: 2;
+  font-weight: 500;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    color: ${props => props.theme.colors.white};
+  }
+
+  &.active {
+    color: ${props => props.theme.colors.white};
+    background-color: ${props => props.theme.colors.accent};
+  }
+`;
+
+export const Section = styled.section`
+  background-color: green;
+`;
