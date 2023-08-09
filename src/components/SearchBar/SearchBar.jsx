@@ -9,7 +9,7 @@ import { Form, Button, Input } from './Searchbar.styled';
 
 const SearchBar = ({ onSubmit }) => {
   const [searchParams] = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get('film') ?? '');
+  const [query, setQuery] = useState(searchParams.get('query') ?? '');
 
   const onInputChange = e => {
     setQuery(e.currentTarget.value.toLowerCase());

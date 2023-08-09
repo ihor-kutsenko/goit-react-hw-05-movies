@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import notifyOptions from 'components/NotifyOptions/NotifyOptions';
 
+import Loader from 'components/Loader/Loader';
 import { fetchSearchMovies, fetchGenresMovies } from 'services/themoviedbAPI';
 import SearchBar from 'components/SearchBar/SearchBar';
 import MoviesList from 'components/MoviesList/MovieList';
@@ -10,14 +11,16 @@ import MoviesList from 'components/MoviesList/MovieList';
 const Movies = () => {
   const [searchMovies, setSearchMovies] = useState([]);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [genres, setGenres] = useState([]);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchMovie = searchParams.get('film') ?? '';
+  const searchMovie = searchParams.get('query') ?? '';
 
   useEffect(() => {
     const getSearchMovies = async query => {
       try {
+        setLoading(true);
         const { results } = await fetchSearchMovies(query);
         if (results.length === 0) {
           toast.info(
@@ -31,6 +34,8 @@ const Movies = () => {
         setSearchMovies([...results]);
       } catch (error) {
         setError(error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -51,7 +56,7 @@ const Movies = () => {
 
   const onFormSearch = query => {
     setSearchParams({
-      film: query,
+      query: query,
     });
   };
 
@@ -64,6 +69,7 @@ const Movies = () => {
           'Ooops... Something went wrong. Please try again later!',
           notifyOptions
         )}
+      {loading && <Loader />}
     </>
   );
 };

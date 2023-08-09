@@ -12,26 +12,17 @@ export const GenresBlock = styled.div`
 `;
 
 export const GalleryItem = styled.li`
-  // position: relative;
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {
-    // width: 100%;
     flex-basis: calc((100% - 2 * 16px) / 3);
-    // margin-right: 32px;
     margin-bottom: 32px;
-
-    // &:not(:last-child) {
-    //   margin-bottom: 32px;
-    //   margin-right: 32px;
-    // }
   }
 
   @media screen and (min-width: 1280px) {
     flex-basis: calc((100% - 2 * 16px) / 3);
-    // margin-right: 16px;
     margin-bottom: 32px;
   }
 
