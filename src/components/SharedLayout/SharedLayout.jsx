@@ -2,12 +2,13 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { FcFilmReel } from 'react-icons/fc';
 import { Container, Header, Logo, Link } from './Sharedlayout.styled';
+import Loader from 'components/Loader/Loader';
 
 const SharedLayout = () => {
   return (
     <Container>
       <Header>
-        <Logo>
+        <Logo to="/">
           FilmHub
           <FcFilmReel />
         </Logo>
@@ -16,7 +17,7 @@ const SharedLayout = () => {
           <Link to="/movies">Movies</Link>
         </nav>
       </Header>
-      <Suspense fallback={<div>Loading page ...</div>}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </Container>

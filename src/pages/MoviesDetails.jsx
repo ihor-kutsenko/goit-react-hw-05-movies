@@ -1,18 +1,20 @@
 import { useState, useEffect, Suspense } from 'react';
-import { useParams, Outlet } from 'react-router-dom';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import notifyOptions from 'components/NotifyOptions/NotifyOptions';
 
 import Loader from 'components/Loader/Loader';
 import { fetchMovieDetails } from 'services/themoviedbAPI';
 import MovieCard from 'components/MovieCard/MovieCard';
+import BackLink from 'components/BackLink/BackLink';
 
 const MoviesDetails = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  // const [genres, setGenres] = useState([]);
   const [movieDetails, setMovieDetails] = useState({});
   const { movieId } = useParams();
+  const location = useLocation();
+  const backLink = location.state?.from ?? '/';
 
   useEffect(() => {
     const getMovieDetails = async movieId => {
@@ -37,8 +39,9 @@ const MoviesDetails = () => {
           'Ooops... Something went wrong. Please try again later!',
           notifyOptions
         )}
+      <BackLink to={backLink} />
       <MovieCard detail={movieDetails} />
-      <Suspense fallback={<div>Loading page ...</div>}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </>

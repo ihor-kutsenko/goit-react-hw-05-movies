@@ -7,6 +7,7 @@ import {
   TextTitleInfo,
   TextContainer,
   TextWrapper,
+  ReleaseYear,
 } from './MovieCard.styled';
 
 const MovieCard = ({
@@ -25,7 +26,10 @@ const MovieCard = ({
     <ContainerCard>
       <Image src={posterUrl} alt={title} width="200"></Image>
       <TextContainer>
-        <MovieTitle>{title}</MovieTitle>
+        <MovieTitle>
+          {title}
+          <ReleaseYear>({releaseYear})</ReleaseYear>
+        </MovieTitle>
         <TextTitle>User score: {rating}</TextTitle>
         <TextOverview>
           <TextTitle>Overview</TextTitle>

@@ -22,6 +22,7 @@ export const Image = styled.img`
   }
 `;
 export const TextContainer = styled.div``;
+
 export const TextWrapper = styled.p`
   margin-bottom: 10px;
 `;
@@ -30,6 +31,10 @@ export const MovieTitle = styled.h2`
   text-align: center;
   margin-bottom: 10px;
   color: ${props => props.theme.colors.accent};
+`;
+export const ReleaseYear = styled.span`
+  font-weight: 600;
+  padding: 0px 10px;
 `;
 
 export const TextTitle = styled.span`

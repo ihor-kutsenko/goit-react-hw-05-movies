@@ -21,7 +21,7 @@ export const Header = styled.header`
   }
 `;
 
-export const Logo = styled.p`
+export const Logo = styled(NavLink)`
   font-weight: 700;
   display: flex;
   color: ${props => props.theme.colors.accent};
@@ -30,6 +30,9 @@ export const Logo = styled.p`
   padding-right: 10px;
   font-size: 30px;
   margin: 0;
+  &:hover {
+    color: ${props => props.theme.colors.white};
+  }
 `;
 
 export const Link = styled(NavLink)`
