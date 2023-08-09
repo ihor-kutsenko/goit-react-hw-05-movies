@@ -25,27 +25,24 @@ export const fetchSearchMovies = async query => {
 export const fetchMovieDetails = async id => {
   const params = new URLSearchParams({
     api_key: API_KEY,
-    id: id,
   });
-  const { data } = await axios.get('/movie', { params });
+  const { data } = await axios.get(`/movie/${id}`, { params });
   return data;
 };
 
 export const fetchMovieCredits = async id => {
   const params = new URLSearchParams({
     api_key: API_KEY,
-    id: id,
   });
-  const { data } = await axios.get('/movie/credits', { params });
+  const { data } = await axios.get(`/movie/${id}/credits`, { params });
   return data;
 };
 
 export const fetchMoviesReviews = async id => {
   const params = new URLSearchParams({
     api_key: API_KEY,
-    id: id,
   });
-  const { data } = await axios.get('/movie/reviews', { params });
+  const { data } = await axios.get(`/movie/${id}/reviews`, { params });
   return data;
 };
 

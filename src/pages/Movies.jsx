@@ -52,7 +52,7 @@ const Movies = () => {
       }
     };
     getGenresMovies();
-  }, [genres]);
+  }, []);
 
   const onFormSearch = query => {
     setSearchParams({
