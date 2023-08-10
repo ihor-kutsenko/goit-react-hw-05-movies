@@ -7,6 +7,7 @@ import Home from 'pages/Home';
 import MoviesDetails from 'pages/MoviesDetails';
 import Cast from './Cast/Cast';
 import Review from './Reviews/Reviews';
+import PageNotFound from 'pages/PageNotFound';
 
 export const App = () => {
   return (
@@ -19,6 +20,7 @@ export const App = () => {
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Review />} />
           </Route>
+          <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
       <ToastContainer />
