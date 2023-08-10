@@ -7,12 +7,15 @@ import Loader from 'components/Loader/Loader';
 import { fetchSearchMovies, fetchGenresMovies } from 'services/themoviedbAPI';
 import SearchBar from 'components/SearchBar/SearchBar';
 import MoviesList from 'components/MoviesList/MovieList';
+import FilmNotFound from '../img/not-found-film.jpg';
+import { FilmNotFoundImg } from './Movies.styled';
 
 const Movies = () => {
   const [searchMovies, setSearchMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [genres, setGenres] = useState([]);
+  const [moviesNotFound, setMoviesNotFound] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const searchMovie = searchParams.get('query') ?? '';
@@ -29,9 +32,12 @@ const Movies = () => {
             `Sorry, there are no movies matching your query: "${searchMovie}". Please try to search something else.`,
             notifyOptions
           );
+          setMoviesNotFound(true);
           setSearchMovies([]);
           setSearchParams({});
+          console.log(moviesNotFound);
         }
+        // setMoviesNotFound(false);
 
         setSearchMovies([...results]);
       } catch (error) {
@@ -42,7 +48,7 @@ const Movies = () => {
     };
 
     if (searchMovie) getSearchMovies(searchMovie);
-  }, [searchMovie, setSearchParams]);
+  }, [searchMovie, setSearchParams, moviesNotFound]);
 
   useEffect(() => {
     const getGenresMovies = async () => {
@@ -65,7 +71,11 @@ const Movies = () => {
   return (
     <>
       <SearchBar onSubmit={onFormSearch} />
+
       <MoviesList movies={searchMovies} genres={genres} />
+      {moviesNotFound && (
+        <FilmNotFoundImg src={FilmNotFound} alt="film not found" />
+      )}
       {error &&
         toast.error(
           'Ooops... Something went wrong. Please try again later!',
