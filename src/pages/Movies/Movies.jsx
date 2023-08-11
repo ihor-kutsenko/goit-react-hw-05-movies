@@ -7,7 +7,7 @@ import Loader from 'components/Loader/Loader';
 import { fetchSearchMovies, fetchGenresMovies } from 'services/themoviedbAPI';
 import SearchBar from 'components/SearchBar/SearchBar';
 import MoviesList from 'components/MoviesList/MovieList';
-import FilmNotFound from '../img/not-found-film.jpg';
+import FilmNotFound from '../../img/not-found-film.jpg';
 import { FilmNotFoundImg } from './Movies.styled';
 
 const Movies = () => {

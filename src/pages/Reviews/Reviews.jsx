@@ -5,7 +5,8 @@ import notifyOptions from 'components/NotifyOptions/NotifyOptions';
 
 import { fetchMoviesReviews } from 'services/themoviedbAPI';
 import Loader from 'components/Loader/Loader';
-import { Author, AuthorName, Content, Empty } from './Reviews.styled';
+import ReviewsCard from 'components/ReviewsCard/ReviewsCard';
+import { ReviewsList, ReviewsItem, Empty } from './Reviews.styled';
 
 const Review = () => {
   const { movieId } = useParams();
@@ -38,18 +39,15 @@ const Review = () => {
           notifyOptions
         )}
       {reviews.length ? (
-        <ul>
-          {reviews.map(({ author, content, id }) => {
+        <ReviewsList>
+          {reviews.map(({ id, ...reviews }) => {
             return (
-              <li key={id}>
-                <Author>
-                  Author: <AuthorName>{author}</AuthorName>
-                </Author>
-                <Content>{content}</Content>
-              </li>
+              <ReviewsItem key={id}>
+                <ReviewsCard {...reviews} />
+              </ReviewsItem>
             );
           })}
-        </ul>
+        </ReviewsList>
       ) : (
         <Empty>We don't have any information about cast for this movie</Empty>
       )}

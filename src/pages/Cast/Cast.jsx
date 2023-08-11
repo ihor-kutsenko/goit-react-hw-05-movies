@@ -5,25 +5,14 @@ import notifyOptions from 'components/NotifyOptions/NotifyOptions';
 
 import { fetchMovieCredits } from 'services/themoviedbAPI';
 import Loader from 'components/Loader/Loader';
-import {
-  CastList,
-  CastItem,
-  CastPhotoWrapper,
-  CastPhoto,
-  Wrap,
-  ActorsName,
-  ActorsCharacter,
-  MovieHero,
-  Empty,
-} from './Cast.styled';
+import CastCard from 'components/CastCard/CastCard';
+import { CastList, CastItem, Empty } from './Cast.styled';
 
 const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-
-  const defaultImg = `https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;`;
 
   useEffect(() => {
     const getcast = async movieId => {
@@ -51,27 +40,9 @@ const Cast = () => {
         )}
       {cast.length ? (
         <CastList>
-          {cast.map(({ id, profile_path, name, character }) => (
+          {cast.map(({ id, ...cast }) => (
             <CastItem key={id}>
-              <CastPhotoWrapper>
-                <CastPhoto
-                  src={
-                    profile_path
-                      ? `https://image.tmdb.org/t/p/original${profile_path}`
-                      : defaultImg
-                  }
-                  alt={name}
-                  width="120"
-                />
-              </CastPhotoWrapper>
-              <Wrap>
-                <ActorsName>{name}</ActorsName>
-                {character && (
-                  <ActorsCharacter>
-                    Character: <MovieHero>{character}</MovieHero>
-                  </ActorsCharacter>
-                )}
-              </Wrap>
+              <CastCard {...cast} />
             </CastItem>
           ))}
         </CastList>

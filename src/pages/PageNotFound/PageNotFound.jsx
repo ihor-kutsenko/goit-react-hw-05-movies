@@ -1,4 +1,4 @@
-import NotFound from '../img/not-found2.png';
+import NotFound from '../../img/not-found2.png';
 import styled from 'styled-components';
 
 const Title = styled.h1`

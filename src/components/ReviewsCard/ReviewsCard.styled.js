@@ -33,9 +33,3 @@ export const Content = styled.p`
     border-bottom-color: ${props => props.theme.colors.grey};
   }
 `;
-
-export const Empty = styled.p`
-  text-align: center;
-  margin-top: 20px;
-  color: ${props => props.theme.colors.text};
-`;
