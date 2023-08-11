@@ -1,3 +1,7 @@
+// import { Suspense } from 'react';
+// import { Outlet } from 'react-router-dom';
+// import Loader from 'components/Loader/Loader';
+
 import {
   Image,
   MovieTitle,
@@ -18,7 +22,7 @@ const MovieCard = ({
 }) => {
   const posterUrl = poster_path
     ? `https://image.tmdb.org/t/p/w300${poster_path}`
-    : `https://astoriamuseums.org/wp-content/uploads/2020/10/OFM-poster-not-available.png`;
+    : `https://www.scifi-movies.com/images/site/en/affiche_nondisponible.jpg`;
   const releaseYear = new Date(Date.parse(release_date)).getFullYear() || '';
   const rating = vote_average
     ? `${(vote_average * 10).toFixed(0)}%`

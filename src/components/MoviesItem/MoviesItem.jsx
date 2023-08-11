@@ -20,7 +20,7 @@ const MoviesItem = ({
   const votes = vote_average.toFixed(1);
   const posterUrl = poster_path
     ? `https://image.tmdb.org/t/p/w300${poster_path}`
-    : `https://astoriamuseums.org/wp-content/uploads/2020/10/OFM-poster-not-available.png`;
+    : `https://www.scifi-movies.com/images/site/en/affiche_nondisponible.jpg`;
   const releaseYear = new Date(Date.parse(release_date)).getFullYear() || '';
 
   return (
