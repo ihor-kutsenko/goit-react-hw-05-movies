@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 
 export const ContainerCard = styled.div`
   padding: 15px;
-
+  height: auto;
+  border-radius: 12px;
   background-color: ${props => props.theme.colors.grey};
   color: ${props => props.theme.colors.text};
-  height: auto;
+
   @media screen and (min-width: 600px) {
     display: flex;
     gap: 30px;

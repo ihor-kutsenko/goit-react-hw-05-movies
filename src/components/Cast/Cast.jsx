@@ -44,6 +44,11 @@ const Cast = () => {
   return (
     <>
       {loading && <Loader />}
+      {error &&
+        toast.error(
+          'Ooops... Something went wrong. Please try again later!',
+          notifyOptions
+        )}
       {cast.length ? (
         <CastList>
           {cast.map(({ id, profile_path, name, character }) => (
@@ -73,11 +78,6 @@ const Cast = () => {
       ) : (
         <Empty>We don't have any information about cast for this movie</Empty>
       )}
-      {error &&
-        toast.error(
-          'Ooops... Something went wrong. Please try again later!',
-          notifyOptions
-        )}
     </>
   );
 };
