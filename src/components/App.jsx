@@ -1,13 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { lazy } from 'react';
 
 import SharedLayout from './SharedLayout/SharedLayout';
-import Movies from 'pages/Movies/Movies';
-import Home from 'pages/Home/Home';
-import MoviesDetails from 'pages/MoviesDetails/MoviesDetails';
-import Cast from '../pages/Cast/Cast';
-import Review from '../pages/Reviews/Reviews';
-import PageNotFound from 'pages/PageNotFound/PageNotFound';
+
+const Movies = lazy(() => import('pages/Movies/Movies'));
+const Home = lazy(() => import('pages/Home/Home'));
+const MoviesDetails = lazy(() => import('pages/MoviesDetails/MoviesDetails'));
+const Cast = lazy(() => import('pages/Cast/Cast'));
+const Review = lazy(() => import('pages/Reviews/Reviews'));
+const PageNotFound = lazy(() => import('pages/PageNotFound/PageNotFound'));
 
 export const App = () => {
   return (
@@ -23,6 +25,7 @@ export const App = () => {
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
+
       <ToastContainer />
     </>
   );

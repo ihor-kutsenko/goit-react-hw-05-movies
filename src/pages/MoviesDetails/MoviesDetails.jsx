@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, useRef } from 'react';
 import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import notifyOptions from 'components/NotifyOptions/NotifyOptions';
@@ -14,7 +14,8 @@ const MoviesDetails = () => {
   const [movieDetails, setMovieDetails] = useState({});
   const { movieId } = useParams();
   const location = useLocation();
-  const backLink = location.state?.from ?? '/';
+  // const backLink = location.state?.from ?? '/';
+  const backLink = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     const getMovieDetails = async movieId => {
@@ -39,7 +40,7 @@ const MoviesDetails = () => {
           'Ooops... Something went wrong. Please try again later!',
           notifyOptions
         )}
-      <BackLink to={backLink} />
+      <BackLink to={backLink.current} />
       <MovieCard detail={movieDetails} />
       <Suspense fallback={<Loader />}>
         <Outlet />
