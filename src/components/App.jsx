@@ -1,8 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { lazy } from 'react';
+import ScrollToTop from 'react-scroll-up';
+import { RxThickArrowUp } from 'react-icons/rx';
 
 import SharedLayout from './SharedLayout/SharedLayout';
+import scrollToTopStyle from './ScrollToUp/ScrollToUpStyled';
+import ScrollWrapper from './ScrollToUp/ScrollWrapper';
 
 const Movies = lazy(() => import('pages/Movies/Movies'));
 const Home = lazy(() => import('pages/Home/Home'));
@@ -25,6 +29,12 @@ export const App = () => {
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
+
+      <ScrollToTop showUnder={120} style={scrollToTopStyle}>
+        <ScrollWrapper>
+          <RxThickArrowUp size="28" strokeWidth="0.2px" />
+        </ScrollWrapper>
+      </ScrollToTop>
 
       <ToastContainer />
     </>
