@@ -7,6 +7,7 @@ import { RxThickArrowUp } from 'react-icons/rx';
 import SharedLayout from './SharedLayout/SharedLayout';
 import scrollToTopStyle from './ScrollToUp/ScrollToUpStyled';
 import ScrollWrapper from './ScrollToUp/ScrollWrapper';
+import Trailer from 'pages/Trailer/Trailer';
 
 const Movies = lazy(() => import('pages/Movies/Movies'));
 const Home = lazy(() => import('pages/Home/Home'));
@@ -25,6 +26,7 @@ export const App = () => {
           <Route path="movies/:movieId" element={<MoviesDetails />}>
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Review />} />
+            <Route path="trailer" element={<Trailer />} />
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Route>

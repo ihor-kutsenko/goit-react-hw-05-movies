@@ -63,6 +63,9 @@ const MovieCard = ({
             <li>
               <InfoItem to="reviews">Reviews</InfoItem>
             </li>
+            <li>
+              <InfoItem to="trailer">Trailer</InfoItem>
+            </li>
           </InfoList>
         </TextContainer>
       </ContainerCard>
