@@ -30,6 +30,25 @@ export const TextWrapper = styled.p`
   margin-bottom: 10px;
 `;
 
+export const Button = styled.button`
+  display: inline-block;
+  padding: 8px 16px;
+  margin-top: 20px;
+  border-radius: 25px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  width: 200px;
+  color: ${props => props.theme.colors.black};
+  background-color: ${props => props.theme.colors.accent};
+  font-weight: 700;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    color: ${props => props.theme.colors.white};
+  }
+`;
+
 export const MovieTitle = styled.h2`
   text-align: center;
   margin-bottom: 10px;

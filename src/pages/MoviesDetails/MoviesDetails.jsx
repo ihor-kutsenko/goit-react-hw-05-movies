@@ -8,7 +8,10 @@ import { fetchMovieDetails } from 'services/themoviedbAPI';
 import MovieCard from 'components/MovieCard/MovieCard';
 import BackLink from 'components/BackLink/BackLink';
 
-const MoviesDetails = () => {
+// import useLocalStorage from 'hooks/UseLocalStorage';
+
+const MoviesDetails = ({ isInLibrary, removeMovieFromLibrary }) => {
+  // const [movieStorages, setMovieStorages] = useLocalStorage('MovieStorages');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [movieDetails, setMovieDetails] = useState({});
@@ -29,6 +32,7 @@ const MoviesDetails = () => {
         setLoading(false);
       }
     };
+
     getMovieDetails(movieId);
   }, [movieId]);
 

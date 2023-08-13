@@ -1,4 +1,5 @@
-// import { useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import notifyOptions from 'components/NotifyOptions/NotifyOptions';
 
 import {
   Image,
@@ -13,10 +14,21 @@ import {
   InfoItem,
   InfoText,
   InfoList,
+  Button,
 } from './MovieCard.styled';
 
+import useLocalStorage from 'hooks/UseLocalStorage';
+
 const MovieCard = ({
-  detail: { poster_path, title, vote_average, overview, genres, release_date },
+  detail: {
+    poster_path,
+    id,
+    title,
+    vote_average,
+    overview,
+    genres,
+    release_date,
+  },
 }) => {
   const posterUrl = poster_path
     ? `https://image.tmdb.org/t/p/w300${poster_path}`
@@ -26,6 +38,39 @@ const MovieCard = ({
     ? `${(vote_average * 10).toFixed(0)}%`
     : 'Not rated yet';
   const review = overview ? overview : 'Not overview';
+
+  const [movieStorages, setMovieStorages] = useLocalStorage('MovieStorages');
+
+  const isInLibrary = movieStorages.some(
+    existingMovie => existingMovie.id === id
+  );
+
+  const toggleLibraryStatus = () => {
+    if (isInLibrary) {
+      setMovieStorages(movieStorages.filter(movie => movie.id !== id));
+      toast.info(`${title} was deleted from your Library`, notifyOptions);
+    } else {
+      const movie = {
+        id,
+        poster_path,
+        overview,
+        title,
+        release_date,
+        vote_average,
+        genres,
+      };
+      setMovieStorages([...movieStorages, movie]);
+      toast.success(
+        `${title} was successfully added to your Library`,
+        notifyOptions
+      );
+    }
+  };
+  // const removeMovieFromLibrary = movieId => {
+  //   const updatedMovies = movieStorages.filter(movie => movie.id !== movieId);
+  //   setMovieStorages(updatedMovies);
+  //   toast.info(`${title} was deleted from your Library`, notifyOptions);
+  // };
 
   return (
     <>
@@ -54,7 +99,11 @@ const MovieCard = ({
               </TextTitleInfo>
             </TextWrapper>
           )}
-          <div></div>
+
+          <Button type="button" onClick={toggleLibraryStatus} disabled={false}>
+            {isInLibrary ? 'Delete Film from Library' : 'Add Film to Library'}
+          </Button>
+
           <InfoText>Additional information</InfoText>
           <InfoList>
             <li>
