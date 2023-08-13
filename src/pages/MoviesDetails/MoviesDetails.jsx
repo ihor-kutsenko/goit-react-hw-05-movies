@@ -10,7 +10,7 @@ import BackLink from 'components/BackLink/BackLink';
 
 // import useLocalStorage from 'hooks/UseLocalStorage';
 
-const MoviesDetails = ({ isInLibrary, removeMovieFromLibrary }) => {
+const MoviesDetails = () => {
   // const [movieStorages, setMovieStorages] = useLocalStorage('MovieStorages');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);

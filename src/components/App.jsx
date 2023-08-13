@@ -30,6 +30,7 @@ export const App = () => {
             <Route path="trailer" element={<Trailer />} />
           </Route>
           <Route path="library" element={<Library />} />
+
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
