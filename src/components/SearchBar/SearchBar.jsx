@@ -32,7 +32,7 @@ const SearchBar = ({ onSubmit }) => {
           name="query"
           type="text"
           autoFocus
-          placeholder="Search movies"
+          placeholder="Search . . . "
           onChange={onInputChange}
           value={query}
         />

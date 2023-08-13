@@ -62,3 +62,13 @@ export const fetchTrailerById = async id => {
   const { data } = await axios.get(`/movie/${id}/videos`, { params });
   return data;
 };
+
+export const fetchActors = async query => {
+  const params = new URLSearchParams({
+    api_key: API_KEY,
+    page: 1,
+    query: query,
+  });
+  const { data } = await axios.get('/search/person', { params });
+  return data;
+};
