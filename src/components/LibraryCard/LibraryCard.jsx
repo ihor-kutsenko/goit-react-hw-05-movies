@@ -29,6 +29,7 @@ const LibraryMovieCard = ({
     genres,
     release_date,
   },
+  updateMovieStorages,
 }) => {
   const posterUrl = poster_path
     ? `https://image.tmdb.org/t/p/w300${poster_path}`
@@ -42,7 +43,7 @@ const LibraryMovieCard = ({
 
   const review = overview ? overview : 'Not overview';
 
-  const [movieStorages, setMovieStorages] = useLocalStorage('MovieStorages');
+  const [movieStorages] = useLocalStorage('MovieStorages');
   const location = useLocation();
 
   const isInLibrary = movieStorages.some(
@@ -51,7 +52,9 @@ const LibraryMovieCard = ({
 
   const toggleLibraryStatus = () => {
     if (isInLibrary) {
-      setMovieStorages(movieStorages.filter(movie => movie.id !== id));
+      updateMovieStorages(prevStorages =>
+        prevStorages.filter(movie => movie.id !== id)
+      );
       toast.info(`${title} was deleted from your Library`, notifyOptions);
     } else {
       const movie = {
@@ -63,18 +66,13 @@ const LibraryMovieCard = ({
         vote_average,
         genres,
       };
-      setMovieStorages([...movieStorages, movie]);
+      updateMovieStorages(prevStorages => [...prevStorages, movie]);
       toast.success(
         `${title} was successfully added to your Library`,
         notifyOptions
       );
     }
   };
-  // const removeMovieFromLibrary = movieId => {
-  //   const updatedMovies = movieStorages.filter(movie => movie.id !== movieId);
-  //   setMovieStorages(updatedMovies);
-  //   toast.info(`${title} was deleted from your Library`, notifyOptions);
-  // };
 
   return (
     <>
