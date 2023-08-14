@@ -72,3 +72,11 @@ export const fetchActors = async query => {
   const { data } = await axios.get('/search/person', { params });
   return data;
 };
+
+export const fetchActorsDetails = async id => {
+  const params = new URLSearchParams({
+    api_key: API_KEY,
+  });
+  const { data } = await axios.get(`/person/${id}`, { params });
+  return data;
+};

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import notifyOptions from 'components/NotifyOptions/NotifyOptions';
 
@@ -42,7 +42,9 @@ const Cast = () => {
         <CastList>
           {cast.map(({ id, ...cast }) => (
             <CastItem key={id}>
-              <CastCard {...cast} />
+              <Link to={`/actors/${id}`}>
+                <CastCard {...cast} />
+              </Link>
             </CastItem>
           ))}
         </CastList>

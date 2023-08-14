@@ -4,25 +4,25 @@ import { toast } from 'react-toastify';
 import notifyOptions from 'components/NotifyOptions/NotifyOptions';
 
 import Loader from 'components/Loader/Loader';
-import { fetchMovieDetails } from 'services/themoviedbAPI';
-import MovieCard from 'components/MovieCard/MovieCard';
+import { fetchActorsDetails } from 'services/themoviedbAPI';
 import BackLink from 'components/BackLink/BackLink';
+import ActorDetailCard from 'components/ActorDetailCard/ActorDetailCard';
 
-const MoviesDetails = () => {
+const ActorDetails = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [movieDetails, setMovieDetails] = useState({});
-  const { movieId } = useParams();
+  const [actorDetails, setActorDetails] = useState({});
+  const { actorId } = useParams();
+
   const location = useLocation();
-  // const backLink = location.state?.from ?? '/';
   const backLink = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
-    const getMovieDetails = async movieId => {
+    const getActorDetails = async actorId => {
       try {
         setLoading(true);
-        const movieDetailData = await fetchMovieDetails(movieId);
-        setMovieDetails(movieDetailData);
+        const actorDetailData = await fetchActorsDetails(actorId);
+        setActorDetails(actorDetailData);
       } catch (error) {
         setError(error);
       } finally {
@@ -30,9 +30,8 @@ const MoviesDetails = () => {
       }
     };
 
-    getMovieDetails(movieId);
-  }, [movieId]);
-
+    getActorDetails(actorId);
+  }, [actorId]);
   return (
     <>
       {loading && <Loader />}
@@ -42,7 +41,7 @@ const MoviesDetails = () => {
           notifyOptions
         )}
       <BackLink to={backLink.current} />
-      <MovieCard detail={movieDetails} />
+      <ActorDetailCard detail={actorDetails} />
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
@@ -50,4 +49,4 @@ const MoviesDetails = () => {
   );
 };
 
-export default MoviesDetails;
+export default ActorDetails;

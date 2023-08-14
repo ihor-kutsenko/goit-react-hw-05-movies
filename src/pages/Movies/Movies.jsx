@@ -35,9 +35,7 @@ const Movies = () => {
           setMoviesNotFound(true);
           setSearchMovies([]);
           setSearchParams({});
-          // console.log(moviesNotFound);
         }
-        // setMoviesNotFound(false);
 
         setSearchMovies([...results]);
       } catch (error) {

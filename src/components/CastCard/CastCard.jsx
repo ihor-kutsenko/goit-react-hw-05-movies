@@ -7,7 +7,7 @@ import {
   MovieHero,
 } from './CastCard.styled';
 
-const CastCard = ({ profile_path, name, character }) => {
+const CastCard = ({ profile_path, name, character, id }) => {
   const defaultImg = `https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;`;
 
   return (

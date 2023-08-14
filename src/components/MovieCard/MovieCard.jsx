@@ -66,11 +66,6 @@ const MovieCard = ({
       );
     }
   };
-  // const removeMovieFromLibrary = movieId => {
-  //   const updatedMovies = movieStorages.filter(movie => movie.id !== movieId);
-  //   setMovieStorages(updatedMovies);
-  //   toast.info(`${title} was deleted from your Library`, notifyOptions);
-  // };
 
   return (
     <>

@@ -8,7 +8,6 @@ export const TitleLibrary = styled.h2`
   position: relative;
   margin: 40px auto;
   font-size: 40px;
-  color: $secondary-text-color;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 20px;
