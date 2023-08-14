@@ -7,7 +7,6 @@ import SearchBar from 'components/SearchBar/SearchBar';
 import Loader from 'components/Loader/Loader';
 import ActorsList from 'components/Actors/ActorsList/ActorsList';
 import { fetchActors } from 'services/themoviedbAPI';
-import ActorsNotFound from '../../img/not-found2.png';
 import { Container } from 'components/Container.styled';
 import ActorsTrending from 'components/Actors/ActorsTrending/ActorsTrending';
 
@@ -15,7 +14,6 @@ const Actors = () => {
   const [searchActors, setSearchActors] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [actorsNotFound, setActorsNotFound] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const searchActor = searchParams.get('query') ?? '';
@@ -33,7 +31,6 @@ const Actors = () => {
             `Sorry, there are no actors matching your query: "${searchActor}". Please try to search something else.`,
             notifyOptions
           );
-          setActorsNotFound(true);
           setSearchActors([]);
           setSearchParams({});
         }
@@ -47,7 +44,7 @@ const Actors = () => {
     };
 
     if (searchActor) getSearchActors(searchActor);
-  }, [searchActor, setSearchParams, actorsNotFound]);
+  }, [searchActor, setSearchParams]);
 
   const onFormSearch = query => {
     setSearchParams({
@@ -63,7 +60,6 @@ const Actors = () => {
         <ActorsList actors={searchActors} />
       </Container>
 
-      {actorsNotFound && <img src={ActorsNotFound} alt="not found" />}
       {error &&
         toast.error(
           'Ooops... Something went wrong. Please try again later!',
