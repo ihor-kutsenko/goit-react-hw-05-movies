@@ -4,26 +4,26 @@ import { toast } from 'react-toastify';
 import notifyOptions from 'components/NotifyOptions/NotifyOptions';
 
 import Loader from 'components/Loader/Loader';
-import { fetchActorsDetails } from 'services/themoviedbAPI';
+import { fetchMovieDetails } from 'services/themoviedbAPI';
+import MovieCard from 'components/Movies/MovieCard/MovieCard';
 import BackLink from 'components/BackLink/BackLink';
-import ActorDetailCard from 'components/ActorDetailCard/ActorDetailCard';
 import { Container } from 'components/Container.styled';
 
-const ActorDetails = () => {
+const MoviesDetails = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [actorDetails, setActorDetails] = useState({});
-  const { actorId } = useParams();
-
+  const [movieDetails, setMovieDetails] = useState({});
+  const { movieId } = useParams();
   const location = useLocation();
+  // const backLink = location.state?.from ?? '/';
   const backLink = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
-    const getActorDetails = async actorId => {
+    const getMovieDetails = async movieId => {
       try {
         setLoading(true);
-        const actorDetailData = await fetchActorsDetails(actorId);
-        setActorDetails(actorDetailData);
+        const movieDetailData = await fetchMovieDetails(movieId);
+        setMovieDetails(movieDetailData);
       } catch (error) {
         setError(error);
       } finally {
@@ -31,8 +31,9 @@ const ActorDetails = () => {
       }
     };
 
-    getActorDetails(actorId);
-  }, [actorId]);
+    getMovieDetails(movieId);
+  }, [movieId]);
+
   return (
     <>
       {loading && <Loader />}
@@ -43,7 +44,7 @@ const ActorDetails = () => {
         )}
       <Container>
         <BackLink to={backLink.current} />
-        <ActorDetailCard detail={actorDetails} />
+        <MovieCard detail={movieDetails} />
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
@@ -52,4 +53,4 @@ const ActorDetails = () => {
   );
 };
 
-export default ActorDetails;
+export default MoviesDetails;

@@ -16,17 +16,21 @@ import ScrollWrapper from './ScrollToUp/ScrollWrapper';
 
 const Movies = lazy(() => import('pages/Movies/Movies'));
 const Home = lazy(() => import('pages/Home/Home'));
-const MoviesDetails = lazy(() => import('pages/MoviesDetails/MoviesDetails'));
-const Cast = lazy(() => import('pages/Cast/Cast'));
-const Review = lazy(() => import('pages/Reviews/Reviews'));
-const Trailer = lazy(() => import('pages/Trailer/Trailer'));
+const MoviesDetails = lazy(() =>
+  import('pages/Movies/MoviesDetails/MoviesDetails')
+);
+const Cast = lazy(() => import('pages/Movies/Cast/Cast'));
+const Review = lazy(() => import('pages/Movies/Reviews/Reviews'));
+const Trailer = lazy(() => import('pages/Movies/Trailer/Trailer'));
 const Library = lazy(() => import('pages/Library/Library'));
 const Actors = lazy(() => import('pages/Actors/Actors'));
-const ActorDetails = lazy(() => import('pages/ActorsDetails/ActorDetails'));
-const ActorBiographyPage = lazy(() =>
-  import('pages/ActorBiography/ActorBiographyPage')
+const ActorDetails = lazy(() =>
+  import('pages/Actors/ActorsDetails/ActorDetails')
 );
-const ActorMovies = lazy(() => import('pages/ActorMovies/ActorMovies'));
+const ActorBiographyPage = lazy(() =>
+  import('pages/Actors/ActorBiography/ActorBiographyPage')
+);
+const ActorMovies = lazy(() => import('pages/Actors/ActorMovies/ActorMovies'));
 const PageNotFound = lazy(() => import('pages/PageNotFound/PageNotFound'));
 
 export const App = () => {

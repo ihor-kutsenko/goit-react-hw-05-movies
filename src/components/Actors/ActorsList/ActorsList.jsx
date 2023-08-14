@@ -1,4 +1,4 @@
-import ActorsItem from 'components/ActorsItem/ActorsItem';
+import ActorsItem from 'components/Actors/ActorsItem/ActorsItem';
 import { ActorList } from './ActorsList.styled';
 const ActorsList = ({ actors }) => {
   return (

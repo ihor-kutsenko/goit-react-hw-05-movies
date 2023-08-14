@@ -1,4 +1,4 @@
-import MoviesItem from 'components/MoviesItem/MoviesItem';
+import MoviesItem from 'components/Movies/MoviesItem/MoviesItem';
 import { MovieList } from './MovieList.styled';
 
 const MoviesList = ({ movies, genres }) => {

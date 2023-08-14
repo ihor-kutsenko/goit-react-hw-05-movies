@@ -6,7 +6,7 @@ import notifyOptions from 'components/NotifyOptions/NotifyOptions';
 import Loader from 'components/Loader/Loader';
 import { fetchSearchMovies, fetchGenresMovies } from 'services/themoviedbAPI';
 import SearchBar from 'components/SearchBar/SearchBar';
-import MoviesList from 'components/MoviesList/MovieList';
+import MoviesList from 'components/Movies/MoviesList/MovieList';
 import FilmNotFound from '../../img/not-found-film.jpg';
 import { FilmNotFoundImg } from './Movies.styled';
 

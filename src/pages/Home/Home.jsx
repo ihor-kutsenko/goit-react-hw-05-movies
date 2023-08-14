@@ -5,7 +5,7 @@ import notifyOptions from 'components/NotifyOptions/NotifyOptions';
 
 import Loader from 'components/Loader/Loader';
 import { fetchTrendingMovies, fetchGenresMovies } from 'services/themoviedbAPI';
-import MoviesList from 'components/MoviesList/MovieList';
+import MoviesList from 'components/Movies/MoviesList/MovieList';
 import { MainTitle } from './Home.styled';
 
 const Home = () => {

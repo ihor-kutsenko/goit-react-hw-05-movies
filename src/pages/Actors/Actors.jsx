@@ -5,7 +5,7 @@ import notifyOptions from 'components/NotifyOptions/NotifyOptions';
 
 import SearchBar from 'components/SearchBar/SearchBar';
 import Loader from 'components/Loader/Loader';
-import ActorsList from 'components/ActorsList/ActorsList';
+import ActorsList from 'components/Actors/ActorsList/ActorsList';
 import { fetchActors } from 'services/themoviedbAPI';
 import ActorsNotFound from '../../img/not-found2.png';
 import { Container } from 'components/Container.styled';

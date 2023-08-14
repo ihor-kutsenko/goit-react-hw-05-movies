@@ -6,7 +6,7 @@ import notifyOptions from 'components/NotifyOptions/NotifyOptions';
 import { fetchTrailerById } from 'services/themoviedbAPI';
 import Loader from 'components/Loader/Loader';
 import RenderTrailer from 'components/RenderTrailer/RenderTrailer';
-import { Empty } from '../../components/RenderTrailer/RenderTrailer.styled';
+import { Empty } from '../../../components/RenderTrailer/RenderTrailer.styled';
 
 const Trailer = () => {
   const { movieId } = useParams();

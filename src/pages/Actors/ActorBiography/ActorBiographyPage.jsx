@@ -11,7 +11,7 @@ import {
   TextTitle,
   Content,
   Empty,
-} from 'pages/ActorBiography/ActorBiographyPage.styled';
+} from 'pages/Actors/ActorBiography/ActorBiographyPage.styled';
 
 const ActorBiographyPage = () => {
   const { actorId } = useParams();
