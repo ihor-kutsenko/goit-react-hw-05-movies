@@ -9,6 +9,7 @@ import ActorsList from 'components/Actors/ActorsList/ActorsList';
 import { fetchActors } from 'services/themoviedbAPI';
 import ActorsNotFound from '../../img/not-found2.png';
 import { Container } from 'components/Container.styled';
+import ActorsTrending from 'components/Actors/ActorsTrending/ActorsTrending';
 
 const Actors = () => {
   const [searchActors, setSearchActors] = useState([]);
@@ -53,10 +54,12 @@ const Actors = () => {
       query: query,
     });
   };
+
   return (
-    <div>
+    <>
       <SearchBar onSubmit={onFormSearch} />
       <Container>
+        {!searchActor ? <ActorsTrending /> : null}
         <ActorsList actors={searchActors} />
       </Container>
 
@@ -67,7 +70,7 @@ const Actors = () => {
           notifyOptions
         )}
       {loading && <Loader />}
-    </div>
+    </>
   );
 };
 
