@@ -80,3 +80,11 @@ export const fetchActorsDetails = async id => {
   const { data } = await axios.get(`/person/${id}`, { params });
   return data;
 };
+
+export const fetchActorsMovies = async id => {
+  const params = new URLSearchParams({
+    api_key: API_KEY,
+  });
+  const { data } = await axios.get(`/person/${id}/movie_credits`, { params });
+  return data.cast;
+};

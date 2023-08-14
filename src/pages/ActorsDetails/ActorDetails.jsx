@@ -7,6 +7,7 @@ import Loader from 'components/Loader/Loader';
 import { fetchActorsDetails } from 'services/themoviedbAPI';
 import BackLink from 'components/BackLink/BackLink';
 import ActorDetailCard from 'components/ActorDetailCard/ActorDetailCard';
+import { Container } from 'components/Container.styled';
 
 const ActorDetails = () => {
   const [loading, setLoading] = useState(false);
@@ -40,11 +41,13 @@ const ActorDetails = () => {
           'Ooops... Something went wrong. Please try again later!',
           notifyOptions
         )}
-      <BackLink to={backLink.current} />
-      <ActorDetailCard detail={actorDetails} />
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
+      <Container>
+        <BackLink to={backLink.current} />
+        <ActorDetailCard detail={actorDetails} />
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </Container>
     </>
   );
 };

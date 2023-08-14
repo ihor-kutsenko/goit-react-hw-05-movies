@@ -23,6 +23,8 @@ export const Title = styled.h2`
 export const ContainerCard = styled.div`
   padding: 15px;
   max-height: 500px;
+  margin: 0 auto 20px;
+
   border-radius: 12px;
   background-color: ${props => props.theme.colors.grey};
   color: ${props => props.theme.colors.text};

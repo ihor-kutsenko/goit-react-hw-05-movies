@@ -16,7 +16,7 @@ const MoviesItem = ({
   genres,
 }) => {
   const location = useLocation();
-  const pathName = location.pathname.includes('/movies') ? '' : 'movies/';
+  // const pathName = location.pathname.includes('/movies') ? '' : 'movies/';
   const votes = vote_average.toFixed(1);
   const posterUrl = poster_path
     ? `https://image.tmdb.org/t/p/w300${poster_path}`
@@ -25,7 +25,7 @@ const MoviesItem = ({
 
   return (
     <GalleryItem>
-      <Link to={`${pathName}${id}`} state={{ from: location }}>
+      <Link to={`/movies/${id}`} state={{ from: location }}>
         <MovieCardThumb>
           <MovieCardPoster src={posterUrl} alt={title} />
         </MovieCardThumb>

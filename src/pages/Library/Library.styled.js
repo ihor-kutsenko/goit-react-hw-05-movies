@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Card = styled.div`
-  margin: 10px;
+  margin-bottom: 20px;
 `;
 
 export const TitleLibrary = styled.h2`

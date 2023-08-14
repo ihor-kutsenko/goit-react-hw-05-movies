@@ -26,6 +26,7 @@ const ActorDetails = lazy(() => import('pages/ActorsDetails/ActorDetails'));
 const ActorBiographyPage = lazy(() =>
   import('pages/ActorBiography/ActorBiographyPage')
 );
+const ActorMovies = lazy(() => import('pages/ActorMovies/ActorMovies'));
 const PageNotFound = lazy(() => import('pages/PageNotFound/PageNotFound'));
 
 export const App = () => {
@@ -43,6 +44,7 @@ export const App = () => {
           <Route path="actors" element={<Actors />} />
           <Route path="actors/:actorId" element={<ActorDetails />}>
             <Route path="biography" element={<ActorBiographyPage />} />
+            <Route path="actors-movie" element={<ActorMovies />} />
           </Route>
           <Route path="library" element={<Library />} />
           <Route path="*" element={<PageNotFound />} />

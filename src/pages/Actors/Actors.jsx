@@ -8,6 +8,7 @@ import Loader from 'components/Loader/Loader';
 import ActorsList from 'components/ActorsList/ActorsList';
 import { fetchActors } from 'services/themoviedbAPI';
 import ActorsNotFound from '../../img/not-found2.png';
+import { Container } from 'components/Container.styled';
 
 const Actors = () => {
   const [searchActors, setSearchActors] = useState([]);
@@ -55,7 +56,10 @@ const Actors = () => {
   return (
     <div>
       <SearchBar onSubmit={onFormSearch} />
-      <ActorsList actors={searchActors} />
+      <Container>
+        <ActorsList actors={searchActors} />
+      </Container>
+
       {actorsNotFound && <img src={ActorsNotFound} alt="not found" />}
       {error &&
         toast.error(

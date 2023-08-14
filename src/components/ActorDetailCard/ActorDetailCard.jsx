@@ -46,7 +46,7 @@ const ActorDetailCard = ({
               <InfoItem to="biography">Biography</InfoItem>
             </li>
             <li>
-              <InfoItem to="movie">Movie</InfoItem>
+              <InfoItem to="actors-movie">Movie</InfoItem>
             </li>
           </InfoList>
         </TextContainer>

@@ -14,6 +14,8 @@ export const GenresBlock = styled.div`
 export const GalleryItem = styled.li`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  border-radius: 12px;
   margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {
@@ -42,6 +44,7 @@ export const GalleryItem = styled.li`
 export const MovieCardThumb = styled.div`
   margin-bottom: 10px;
   overflow: hidden;
+  border-radius: 12px;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 8px;
@@ -95,7 +98,7 @@ export const MovieCardWrapp = styled.div`
 
   font-size: 12px;
   line-height: 1.2;
-  text-align: left;
+  text-align: center;
 
   @media screen and (min-width: 768px) {
     line-height: 1.3;

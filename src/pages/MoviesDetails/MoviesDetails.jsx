@@ -7,6 +7,7 @@ import Loader from 'components/Loader/Loader';
 import { fetchMovieDetails } from 'services/themoviedbAPI';
 import MovieCard from 'components/MovieCard/MovieCard';
 import BackLink from 'components/BackLink/BackLink';
+import { Container } from 'components/Container.styled';
 
 const MoviesDetails = () => {
   const [loading, setLoading] = useState(false);
@@ -41,11 +42,13 @@ const MoviesDetails = () => {
           'Ooops... Something went wrong. Please try again later!',
           notifyOptions
         )}
-      <BackLink to={backLink.current} />
-      <MovieCard detail={movieDetails} />
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
+      <Container>
+        <BackLink to={backLink.current} />
+        <MovieCard detail={movieDetails} />
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </Container>
     </>
   );
 };
