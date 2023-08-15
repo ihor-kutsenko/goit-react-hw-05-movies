@@ -7,11 +7,10 @@ import SearchBar from 'components/SearchBar/SearchBar';
 import Loader from 'components/Loader/Loader';
 import ActorsList from 'components/Actors/ActorsList/ActorsList';
 import { fetchActors } from 'services/themoviedbAPI';
-import { Container } from 'components/Container.styled';
+import { Container, ButtonWrapper } from 'components/Container.styled';
 import ActorsTrending from 'components/Actors/ActorsTrending/ActorsTrending';
 import NextPageBtn from 'components/NextPageBtn/NextPageBtn';
 import PreviousPageBtn from 'components/PreviousPageBtn/PreviousPageBtn';
-import { ButtonWrapper } from 'components/Container.styled';
 
 const Actors = () => {
   const [searchActors, setSearchActors] = useState([]);
@@ -42,6 +41,9 @@ const Actors = () => {
         }
         if (results.length === 20) {
           setNextPageBtn(true);
+        }
+        if (results.length < 20) {
+          setNextPageBtn(false);
         }
         if (page < 2) {
           setPreviousPageBtn(false);

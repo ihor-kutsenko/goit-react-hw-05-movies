@@ -32,6 +32,9 @@ const ActorsTrending = () => {
         if (data.results.length === 20) {
           setNextPageBtn(true);
         }
+        if (data.results.length < 20) {
+          setNextPageBtn(false);
+        }
         if (page < 2) {
           setPreviousPageBtn(false);
         } else {

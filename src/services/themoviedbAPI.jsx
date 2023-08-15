@@ -12,10 +12,10 @@ export const fetchTrendingMovies = async page => {
   return data;
 };
 
-export const fetchSearchMovies = async query => {
+export const fetchSearchMovies = async (query, page) => {
   const params = new URLSearchParams({
     api_key: API_KEY,
-    page: 1,
+    page: page,
     query: query,
   });
   const { data } = await axios.get('/search/movie', { params });
