@@ -11,7 +11,7 @@ import FilmNotFound from '../../img/not-found-film.jpg';
 import { FilmNotFoundImg } from './Movies.styled';
 import NextPageBtn from 'components/NextPageBtn/NextPageBtn';
 import PreviousPageBtn from 'components/PreviousPageBtn/PreviousPageBtn';
-import { ButtonWrapper } from 'components/Container.styled';
+import { ButtonWrapper, Container } from 'components/Container.styled';
 
 const Movies = () => {
   const [searchMovies, setSearchMovies] = useState([]);
@@ -33,7 +33,7 @@ const Movies = () => {
       try {
         setLoading(true);
         const { results } = await fetchSearchMovies(query, page);
-        console.log(results);
+
         if (results.length === 0) {
           toast.info(
             `Sorry, there are no movies matching your query: "${searchMovie}". Please try to search something else.`,
@@ -96,17 +96,18 @@ const Movies = () => {
   return (
     <>
       <SearchBar onSubmit={onFormSearch} />
-
-      <MoviesList movies={searchMovies} genres={genres} />
-      <ButtonWrapper>
-        {previousPageBtn && (
-          <PreviousPageBtn onPreviousPage={handlePreviousPage} />
+      <Container>
+        <MoviesList movies={searchMovies} genres={genres} />
+        <ButtonWrapper>
+          {previousPageBtn && (
+            <PreviousPageBtn onPreviousPage={handlePreviousPage} />
+          )}
+          {nextPageBtn && <NextPageBtn onNextPage={handleNextPage} />}
+        </ButtonWrapper>
+        {moviesNotFound && (
+          <FilmNotFoundImg src={FilmNotFound} alt="film not found" />
         )}
-        {nextPageBtn && <NextPageBtn onNextPage={handleNextPage} />}
-      </ButtonWrapper>
-      {moviesNotFound && (
-        <FilmNotFoundImg src={FilmNotFound} alt="film not found" />
-      )}
+      </Container>
       {error &&
         toast.error(
           'Ooops... Something went wrong. Please try again later!',

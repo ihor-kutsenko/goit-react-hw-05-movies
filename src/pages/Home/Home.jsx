@@ -9,7 +9,7 @@ import MoviesList from 'components/Movies/MoviesList/MovieList';
 import { MainTitle } from './Home.styled';
 import NextPageBtn from 'components/NextPageBtn/NextPageBtn';
 import PreviousPageBtn from 'components/PreviousPageBtn/PreviousPageBtn';
-import { ButtonWrapper } from 'components/Container.styled';
+import { ButtonWrapper, Container } from 'components/Container.styled';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -71,20 +71,22 @@ const Home = () => {
   return (
     <>
       <MainTitle>The most popular movies today 🔝</MainTitle>
-      <MoviesList movies={trendingMovies} genres={genres} />
-      <ButtonWrapper>
-        {previousPageBtn && (
-          <PreviousPageBtn onPreviousPage={handlePreviousPage} />
-        )}
-        {nextPageBtn && <NextPageBtn onNextPage={handleNextPage} />}
-      </ButtonWrapper>
+      <Container>
+        <MoviesList movies={trendingMovies} genres={genres} />
+        <ButtonWrapper>
+          {previousPageBtn && (
+            <PreviousPageBtn onPreviousPage={handlePreviousPage} />
+          )}
+          {nextPageBtn && <NextPageBtn onNextPage={handleNextPage} />}
+        </ButtonWrapper>
 
-      {error &&
-        toast.error(
-          'Ooops... Something went wrong. Please try again later!',
-          notifyOptions
-        )}
-      {loading && <Loader />}
+        {error &&
+          toast.error(
+            'Ooops... Something went wrong. Please try again later!',
+            notifyOptions
+          )}
+        {loading && <Loader />}
+      </Container>
     </>
   );
 };
