@@ -63,11 +63,11 @@ export const fetchTrailerById = async id => {
   return data;
 };
 
-export const fetchActors = async query => {
+export const fetchActors = async (query, page) => {
   const params = new URLSearchParams({
     api_key: API_KEY,
-    page: 1,
-    query: query,
+    page: page,
+    query,
   });
   const { data } = await axios.get('/search/person', { params });
   return data;
@@ -89,10 +89,10 @@ export const fetchActorsMovies = async id => {
   return data.cast;
 };
 
-export const fetchTrendingActors = async () => {
+export const fetchTrendingActors = async page => {
   const params = new URLSearchParams({
     api_key: API_KEY,
-    page: 1,
+    page: page,
   });
   const { data } = await axios.get('/trending/person/day', { params });
   return data;
