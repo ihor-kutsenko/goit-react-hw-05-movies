@@ -28,9 +28,6 @@ const ActorsTrending = () => {
         setLoading(true);
         const data = await fetchTrendingActors(page);
 
-        console.log(data.results);
-        console.log(data.results.length);
-
         setActorsTrending(data.results);
         if (data.results.length === 20) {
           setNextPageBtn(true);
@@ -56,7 +53,7 @@ const ActorsTrending = () => {
   const handlePreviousPage = () => {
     setPage(prevPage => prevPage - 1);
   };
-  console.log(page);
+
   return (
     <>
       <Title>Trending Actors</Title>

@@ -1,4 +1,4 @@
-import { NextBtn, SvgWrapper } from './NextPageBtn.styled';
+import { NextBtn } from './NextPageBtn.styled';
 import { FcNext } from 'react-icons/fc';
 
 const NextPageBtn = ({ onNextPage }) => {

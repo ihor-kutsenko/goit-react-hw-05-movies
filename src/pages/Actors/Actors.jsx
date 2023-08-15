@@ -9,17 +9,17 @@ import ActorsList from 'components/Actors/ActorsList/ActorsList';
 import { fetchActors } from 'services/themoviedbAPI';
 import { Container } from 'components/Container.styled';
 import ActorsTrending from 'components/Actors/ActorsTrending/ActorsTrending';
-// import NextPageBtn from 'components/NextPageBtn/NextPageBtn';
-// import PreviousPageBtn from 'components/PreviousPageBtn/PreviousPageBtn';
-// import Pagination from 'components/Pagination/Pagination';
+import NextPageBtn from 'components/NextPageBtn/NextPageBtn';
+import PreviousPageBtn from 'components/PreviousPageBtn/PreviousPageBtn';
+import { ButtonWrapper } from 'components/Container.styled';
 
 const Actors = () => {
   const [searchActors, setSearchActors] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
-  // const [nextPageBtn, setNextPageBtn] = useState(true);
-  // const [previousPageBtn, setPreviousPageBtn] = useState(false);
+  const [nextPageBtn, setNextPageBtn] = useState(false);
+  const [previousPageBtn, setPreviousPageBtn] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const searchActor = searchParams.get('query') ?? '';
@@ -31,7 +31,7 @@ const Actors = () => {
       try {
         setLoading(true);
         const { results } = await fetchActors(query, page);
-        console.log(results);
+
         if (results.length === 0) {
           toast.info(
             `Sorry, there are no actors matching your query: "${searchActor}". Please try to search something else.`,
@@ -39,15 +39,16 @@ const Actors = () => {
           );
           setSearchActors([]);
           setSearchParams({});
-          // setNextPageBtn(false);
-          // setPreviousPageBtn(false);
         }
-        // if (results.length < 20) {
-        //   setNextPageBtn(false);
-        //   setPreviousPageBtn(false);
-        // }
+        if (results.length === 20) {
+          setNextPageBtn(true);
+        }
+        if (page < 2) {
+          setPreviousPageBtn(false);
+        } else {
+          setPreviousPageBtn(true);
+        }
 
-        // setNextPageBtn(true);
         setSearchActors([...results]);
       } catch (error) {
         setError(error);
@@ -66,13 +67,13 @@ const Actors = () => {
     });
   };
 
-  // const handleNextPage = () => {
-  //   setPage(prevState => prevState + 1);
-  // };
+  const handleNextPage = () => {
+    setPage(prevState => prevState + 1);
+  };
 
-  // const handlePreviousPage = () => {
-  //   setPage(prevState => prevState - 1);
-  // };
+  const handlePreviousPage = () => {
+    setPage(prevPage => prevPage - 1);
+  };
 
   return (
     <>
@@ -80,8 +81,12 @@ const Actors = () => {
       <Container>
         {!searchActor ? <ActorsTrending /> : null}
         <ActorsList actors={searchActors} />
-        {/* {<PreviousPageBtn onPreviousPage={handlePreviousPage} />}
-        {nextPageBtn && <NextPageBtn onNextPage={handleNextPage} />} */}
+        <ButtonWrapper>
+          {previousPageBtn && (
+            <PreviousPageBtn onPreviousPage={handlePreviousPage} />
+          )}
+          {nextPageBtn && <NextPageBtn onNextPage={handleNextPage} />}
+        </ButtonWrapper>
       </Container>
 
       {error &&
