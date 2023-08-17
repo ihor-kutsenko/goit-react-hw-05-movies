@@ -97,3 +97,18 @@ export const fetchTrendingActors = async page => {
   const { data } = await axios.get('/trending/person/day', { params });
   return data;
 };
+
+// filter bar
+
+export const fetchFilters = async (genre, page) => {
+  const params = new URLSearchParams({
+    api_key: API_KEY,
+    with_genres: genre,
+    page: page,
+    // primary_release_year: year,
+    // with_original_language: language,
+  });
+
+  const { data } = await axios.get('/discover/movie', { params });
+  return data.results;
+};
