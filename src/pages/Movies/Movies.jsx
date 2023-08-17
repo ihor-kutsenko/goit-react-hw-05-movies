@@ -18,6 +18,10 @@ import PreviousPageBtn from 'components/PreviousPageBtn/PreviousPageBtn';
 import { ButtonWrapper, Container } from 'components/Container.styled';
 // filter
 import FilterGenres from 'components/FilterBar/FilterGenres/FilterGenres';
+import FilterLanguage from 'components/FilterBar/FilterLanguage/FilterLanguage';
+import FilterReleaseYear from 'components/FilterBar/FilterReleaseYear/FilterReleaseYear';
+import FilterSort from 'components/FilterBar/FilterSort/FilterSort';
+import { FilterBarWrapper } from 'components/FilterBar/FilterBar.styled';
 
 const Movies = () => {
   const [searchMovies, setSearchMovies] = useState([]);
@@ -35,6 +39,9 @@ const Movies = () => {
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [searchPage, setSearchPage] = useState(1); // Page for search
   const [genrePage, setGenrePage] = useState(1); // Page for genre filter
+  const [selectedLanguage, setSelectedLanguage] = useState(null);
+  const [selectedYear, setSelectedYear] = useState(null);
+  const [selectedSort, setSelectedSort] = useState(null);
 
   useEffect(() => {
     if (!searchMovie) return;
@@ -96,11 +103,19 @@ const Movies = () => {
   useEffect(() => {
     if (!selectedGenre) return;
 
-    const getSearchMoviesByFilter = async genre => {
+    const getSearchMoviesByFilter = async (genre, language, year, sort) => {
       try {
-        const data = await fetchFilters(genre, genrePage);
+        const data = await fetchFilters(genre, language, year, sort, genrePage);
 
         setSearchMovies(data);
+        console.log(data);
+        if (data.length === 0) {
+          toast.info(
+            `Sorry, there are no movies matching your query. Please try to search something else.`,
+            notifyOptions
+          );
+          setMoviesNotFound(true);
+        }
         if (data.length === 20) {
           setNextPageBtn(true);
         }
@@ -118,9 +133,14 @@ const Movies = () => {
         setLoading(false);
       }
     };
-
-    getSearchMoviesByFilter(selectedGenre);
-  }, [selectedGenre, genrePage]);
+    setMoviesNotFound(false);
+    getSearchMoviesByFilter(
+      selectedGenre,
+      selectedLanguage,
+      selectedYear,
+      selectedSort
+    );
+  }, [selectedGenre, selectedLanguage, selectedYear, selectedSort, genrePage]);
 
   // pagination
   const onFormSearch = query => {
@@ -152,7 +172,13 @@ const Movies = () => {
   return (
     <>
       <SearchBar onSubmit={onFormSearch} />
-      <FilterGenres genres={genres} onSelect={setSelectedGenre} />
+      <FilterBarWrapper>
+        <FilterGenres genres={genres} onSelect={setSelectedGenre} />
+        <FilterLanguage onSelect={setSelectedLanguage} />
+        <FilterReleaseYear onSelect={setSelectedYear} />
+        <FilterSort onSelect={setSelectedSort} />
+      </FilterBarWrapper>
+
       <Container>
         {<MoviesList movies={searchMovies} genres={genres} />}
 

@@ -4,6 +4,7 @@ export const FilterBarWrapper = styled.div`
   width: 100%;
   max-width: 600px;
   margin: auto;
+  gap: 10px;
   @media screen and (min-width: 768px) {
     width: fit-content;
     display: flex;

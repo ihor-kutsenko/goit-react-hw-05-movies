@@ -100,13 +100,14 @@ export const fetchTrendingActors = async page => {
 
 // filter bar
 
-export const fetchFilters = async (genre, page) => {
+export const fetchFilters = async (genre, language, year, sort, page) => {
   const params = new URLSearchParams({
     api_key: API_KEY,
     with_genres: genre,
     page: page,
-    // primary_release_year: year,
-    // with_original_language: language,
+    primary_release_year: year,
+    with_original_language: language,
+    sort_by: sort,
   });
 
   const { data } = await axios.get('/discover/movie', { params });
