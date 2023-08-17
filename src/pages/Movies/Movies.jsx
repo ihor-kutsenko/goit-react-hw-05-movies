@@ -110,10 +110,7 @@ const Movies = () => {
         setSearchMovies(data);
         console.log(data);
         if (data.length === 0) {
-          toast.info(
-            `Sorry, there are no movies matching your query. Please try to search something else.`,
-            notifyOptions
-          );
+          toast.info(`Select one more filter to search`, notifyOptions);
           setMoviesNotFound(true);
         }
         if (data.length === 20) {
@@ -173,7 +170,7 @@ const Movies = () => {
     <>
       <SearchBar onSubmit={onFormSearch} />
       <FilterBarWrapper>
-        <FilterGenres genres={genres} onSelect={setSelectedGenre} />
+        <FilterGenres onSelect={setSelectedGenre} />
         <FilterLanguage onSelect={setSelectedLanguage} />
         <FilterReleaseYear onSelect={setSelectedYear} />
         <FilterSort onSelect={setSelectedSort} />
