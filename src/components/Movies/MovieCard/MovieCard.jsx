@@ -28,12 +28,16 @@ const MovieCard = ({
     overview,
     genres,
     release_date,
+    runtime,
+    production_countries,
   },
 }) => {
   const posterUrl = poster_path
     ? `https://image.tmdb.org/t/p/w300${poster_path}`
     : `https://www.scifi-movies.com/images/site/en/affiche_nondisponible.jpg`;
-  const releaseYear = new Date(Date.parse(release_date)).getFullYear() || '';
+  const releaseYear =
+    new Date(Date.parse(release_date)).getFullYear() ||
+    'no information available';
   const rating = vote_average
     ? `${(vote_average * 10).toFixed(0)}%`
     : 'Not rated yet';
@@ -44,6 +48,17 @@ const MovieCard = ({
   const isInLibrary = movieStorages.some(
     existingMovie => existingMovie.id === id
   );
+
+  const convertMinutesToHoursAndMinutes = minutes => {
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+    return `${hours <= 0 ? '' : `${hours}h`} ${
+      remainingMinutes > 0 ? ` ${remainingMinutes}` : ''
+    }m`;
+  };
+
+  const countries = countries =>
+    countries.map(country => country.name).join(', ');
 
   const toggleLibraryStatus = () => {
     if (isInLibrary) {
@@ -58,6 +73,8 @@ const MovieCard = ({
         release_date,
         vote_average,
         genres,
+        runtime,
+        production_countries,
       };
       setMovieStorages([...movieStorages, movie]);
       toast.success(
@@ -86,6 +103,25 @@ const MovieCard = ({
             <TextTitle>Release date: </TextTitle>
             <TextTitleInfo>{releaseYear}</TextTitleInfo>
           </TextWrapper>
+          <TextWrapper>
+            <TextTitle>Runtime: </TextTitle>
+            <TextTitleInfo>
+              {runtime && convertMinutesToHoursAndMinutes(runtime)}
+            </TextTitleInfo>
+          </TextWrapper>
+
+          {production_countries ? (
+            <TextWrapper>
+              <TextTitle>Country: </TextTitle>
+              <TextTitleInfo>
+                {production_countries.length > 0
+                  ? countries(production_countries)
+                  : 'No information available'}
+              </TextTitleInfo>
+            </TextWrapper>
+          ) : (
+            ''
+          )}
           {genres && genres.length > 0 && (
             <TextWrapper>
               <TextTitle>Genres: </TextTitle>
