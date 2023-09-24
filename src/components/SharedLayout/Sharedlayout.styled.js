@@ -8,16 +8,24 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 8px 0;
-  margin-bottom: 16px;
-  border-bottom: 1px solid #94a3b8;
-
   > nav {
     display: flex;
+  }
+  @media screen and (max-width: 499px) {
+    > nav {
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+  }
+
+  @media screen and (min-width: 500px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 8px 0;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #94a3b8;
   }
 `;
 
@@ -32,6 +40,12 @@ export const Logo = styled(NavLink)`
   margin: 0;
   &:hover {
     color: ${props => props.theme.colors.white};
+  }
+
+  @media screen and (max-width: 500px) {
+    justify-content: center;
+    margin-top: 16px;
+    margin-bottom: 16px;
   }
 `;
 

@@ -147,7 +147,7 @@ const Movies = () => {
     });
     setSearchPage(1); // Reset the search page
     setGenrePage(1); // Reset the genre filter page
-    setSelectedGenre(null);
+    // setSelectedGenre(null);
   };
 
   const handleNextPage = () => {

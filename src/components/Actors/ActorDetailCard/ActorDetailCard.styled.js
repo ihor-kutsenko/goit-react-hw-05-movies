@@ -22,14 +22,14 @@ export const Title = styled.h2`
 `;
 export const ContainerCard = styled.div`
   padding: 15px;
-  max-height: 500px;
+  /* max-height: 500px; */
   margin: 0 auto 20px;
 
   border-radius: 12px;
   background-color: ${props => props.theme.colors.grey};
   color: ${props => props.theme.colors.text};
 
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 768px) {
     display: flex;
     gap: 30px;
   }
@@ -40,7 +40,7 @@ export const Image = styled.img`
   margin-bottom: 20px;
   border-radius: 10px;
   height: auto;
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 768px) {
     max-width: 100%;
     margin-bottom: 0;
     margin: 0;
@@ -101,7 +101,7 @@ export const Content = styled.p`
 
 export const InfoText = styled.h3`
   text-align: center;
-  margin-top: 120px;
+  margin-top: 80px;
   margin-bottom: 20px;
   color: ${props => props.theme.colors.white};
 `;

@@ -13,6 +13,7 @@ import {
   TextWrapper,
   ReleaseYear,
   InfoText,
+  CenteredButtonWrapper,
   Button,
   InfoItem,
 } from './LibraryCard.styled';
@@ -102,9 +103,15 @@ const LibraryMovieCard = ({
             </TextWrapper>
           )}
 
-          <Button type="button" onClick={toggleLibraryStatus} disabled={false}>
-            {isInLibrary ? 'Delete Film from Library' : 'Add Film to Library'}
-          </Button>
+          <CenteredButtonWrapper>
+            <Button
+              type="button"
+              onClick={toggleLibraryStatus}
+              disabled={false}
+            >
+              {isInLibrary ? 'Delete Film from Library' : 'Add Film to Library'}
+            </Button>
+          </CenteredButtonWrapper>
 
           <InfoText>
             <InfoItem to={`/movies/${id}`} state={{ from: location }}>

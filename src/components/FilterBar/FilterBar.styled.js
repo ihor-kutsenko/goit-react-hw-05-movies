@@ -2,61 +2,29 @@ import styled from 'styled-components';
 
 export const FilterBarWrapper = styled.div`
   width: 100%;
-  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   margin: auto;
   gap: 10px;
-  @media screen and (min-width: 768px) {
+
+  @media screen and (min-width: 500px) {
     width: fit-content;
-    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
+    max-width: 500px;
   }
-`;
 
-export const FilterBarContainer = styled.div`
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 40px;
-`;
-
-export const Form = styled.form`
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-  }
-`;
-
-export const FormList = styled.ul`
-  display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: stretch;
-  gap: 6px;
-
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
+  @media screen and (min-width: 868px) {
     flex-wrap: nowrap;
-    justify-content: center;
-  }
-`;
-
-export const FormListItem = styled.li`
-  display: inline-flex;
-  width: calc(50% - 4px);
-  background-color: transparent;
-
-  @media screen and (min-width: 768px) {
-    width: max-content;
   }
 `;
 
 export const FormSelect = styled.select`
   display: flex;
   align-items: center;
-  max-width: 500px;
+  width: 200px;
   min-width: 200px;
   min-height: 44px;
   padding: 12px 6px;
@@ -79,7 +47,7 @@ export const FormSelect = styled.select`
 `;
 
 export const Option = styled.option`
-  max-width: 500px;
+  width: 200px;
   min-height: 44px;
   background-color: hsla(34, 14%, 90%, 0.4);
   padding: 12px 6px;

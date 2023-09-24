@@ -23,7 +23,7 @@ export const GalleryItem = styled.li`
     margin-bottom: 32px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 980px) {
     flex-basis: calc((100% - 2 * 16px) / 3);
     margin-bottom: 32px;
   }
@@ -99,12 +99,15 @@ export const MovieCardWrapp = styled.div`
   font-size: 12px;
   line-height: 1.2;
   text-align: center;
+  width: 280px;
 
   @media screen and (min-width: 768px) {
+    width: 336px;
     line-height: 1.3;
   }
 
   @media screen and (min-width: 1280px) {
+    width: 394px;
     font-size: 20px;
     line-height: 1.2;
   }

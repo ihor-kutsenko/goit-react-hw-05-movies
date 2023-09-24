@@ -8,7 +8,7 @@ export const ContainerCard = styled.div`
   background-color: ${props => props.theme.colors.grey};
   color: ${props => props.theme.colors.text};
 
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 768px) {
     display: flex;
     gap: 30px;
   }
@@ -18,7 +18,7 @@ export const Image = styled.img`
   margin: 0 auto;
   margin-bottom: 20px;
   border-radius: 10px;
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 768px) {
     width: 300px;
     margin-bottom: 0;
     margin: 0;
@@ -79,14 +79,29 @@ export const TextTitleInfo = styled.span`
 
 export const InfoText = styled.h3`
   text-align: center;
-  margin-top: 120px;
+  margin-top: 80px;
   margin-bottom: 20px;
   color: ${props => props.theme.colors.white};
 `;
+
 export const InfoList = styled.ul`
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  gap: 30px;
+  align-items: center;
+  margin: auto;
+  gap: 10px;
+
+  @media screen and (min-width: 500px) {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    gap: 30px;
+  }
 `;
 
 export const InfoItem = styled(Link)`
